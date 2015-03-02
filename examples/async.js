@@ -22,6 +22,7 @@ var Generator = (function() {
         
         numCircles: {
             type: 'number',
+            label: 'Circle count',
             range: [ 20, 250 ],
             value: 100,
             step: 1
