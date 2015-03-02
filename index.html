@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="sandbox">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Stuvio &raquo; Sandbox</title>
+        <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="sandbox/sandbox.css"/>
+    </head>
+    <body class="sandbox">
+        <div style="display: none" ng-include="'sandbox/icons.svg'"></div>
+        <div class="container" ng-controller="SandboxController">
+            <div id="info" class="col col1">
+                <header class="header">
+                    <h4 class="authors">{{ generator.authors | authors }}</h4>
+                    <h3 class="name">{{ generator.name }}</h3>
+                    <p class="description">{{ generator.description }}</p>
+                </header>
+            </div>
+            <x-preview id="preview" generator="generator"></x-preview>
+            <div id="editor">
+                <x-gui class="gui" generator="generator"></x-gui>
+            </div>
+            <footer id="footer">stuvio sandbox <em>(v0.1.0)</em></footer>
+            <div id="warnings" ng-if="warnings.length">
+                <div class="warning" ng-repeat="warning in warnings">
+                    <p class="title">{{ warning.title }}</p>
+                    <p ng-if="warning.info" class="info">{{ warning.info }}</p>
+                </div>
+            </div>
+        </div>
+        <x-modal></x-modal>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-sanitize.min.js"></script>
+        <script src="sandbox/sandbox.js"></script>
+
+        <!-- dependancies : link scripts from the `dependancies` directory here -->
+        
+        <script src="dependancies/deps.js"></script>
+
+        <!-- source : link scripts form the `source` directory here -->
+
+        <script src="source/generator.js"></script>
+        <!-- <script src="examples/canvas.js"></script> -->
+        <!-- <script src="examples/webgl.js"></script> -->
+        <!-- <script src="examples/random.js"></script> -->
+        <!-- <script src="examples/async.js"></script> -->
+        <!-- <script src="examples/types.js"></script> -->
+
+        <!-- end -->
+
+    </body>
+</html>

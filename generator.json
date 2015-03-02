@@ -1,0 +1,9 @@
+{
+    "id": "example-generator",
+    "name": "Example Generator",
+    "version": "1.0.0",
+    "authors": [
+        "Your Name <email@domain.com> (http://domain.com)"
+    ],
+    "description": "This is an example generator showing how to create an application for Stuvio. Please refer to the README for more information."
+}
