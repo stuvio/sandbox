@@ -2,6 +2,13 @@
 
 You can use this sandbox to develop generative art applications (_Generators_) which can be embedded on [Stuvio](http://stuv.io) and used by customers to create unique art prints.
 
+  - [Getting started](#getting-started)
+  - [Creating a Generator](#creating-a-generator)
+  - [Defining User Configurable Settings](#defining-user-configurable-settings)
+  - [Using Randomness](#using-randomness)
+  - [Dimensions](#dimensions)
+  - [Sharing your Generator](#sharing-your-generator)
+
 ## Getting started
 
 To get going, clone this repository and point a local web server (such as [http-server](https://github.com/nodeapps/http-server) or [SimpleHTTPServer](https://docs.python.org/2/library/simplehttpserver.html#module-SimpleHTTPServer) at it.
@@ -157,3 +164,11 @@ There is also a `stuvio.random.seed` property, which is shuffled each time your 
 ## Dimensions
 
 Your Generator will need to run at many different sizes, although the aspect ratio will always remain the same. Currently, this is 1:SQRT(2) (that of international paper sizes) but we're working on a mechanism for you to define your own. Because of this, we recommend that you design your Generator to work based off of a normalized coordinate system - you should select `x` and `y` coordinates for example based on factors of the canvas width and height, rather than absolute values. This will allow your images to scale up and down with different users viewports and when being captured at high resolution for print. You should take the dimensions from the canvas that owns your drawing context, for example `Generator.context.canvas.width`.
+
+## Sharing your Generator
+
+The best way to share your code with us is to push it to a remote git repository and give us access to it, so that we can pull your code down, integrate it into the site and deploy it after testing. If you want to keep your code private but don't have a paid GitHub account, there are services like [BitBucket](https://bitbucket.org/) that offer free private repositories.
+
+Once you've pushed your code up, you should grant access to the GitHub user [soulwire](https://github.com/soulwire) or the email address: _justin@soulwire.co.uk_
+
+Alternatively, you can simply zip up the sandbox that includes your Generator code and email it to [art@stuv.io](mailto:art@stuv.io).
