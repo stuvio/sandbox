@@ -10,6 +10,7 @@
     <body class="sandbox">
         <div style="display: none" ng-include="'sandbox/icons.svg'"></div>
         <div class="container" ng-controller="SandboxController">
+            <x-preview id="preview" generator="generator"></x-preview>
             <div id="info" class="col col1">
                 <header class="header">
                     <h4 class="authors">{{ generator.authors | authors }}</h4>
@@ -17,7 +18,6 @@
                     <p class="description">{{ generator.description }}</p>
                 </header>
             </div>
-            <x-preview id="preview" generator="generator"></x-preview>
             <div id="editor">
                 <x-gui class="gui" generator="generator"></x-gui>
             </div>
@@ -40,12 +40,12 @@
 
         <!-- source : link scripts form the `source` directory here -->
 
-        <script src="source/generator.js"></script>
+        <!-- <script src="source/generator.js"></script> -->
         <!-- <script src="examples/canvas.js"></script> -->
         <!-- <script src="examples/webgl.js"></script> -->
         <!-- <script src="examples/random.js"></script> -->
         <!-- <script src="examples/async.js"></script> -->
-        <!-- <script src="examples/types.js"></script> -->
+        <script src="examples/types.js"></script>
 
         <!-- end -->
 

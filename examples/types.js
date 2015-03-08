@@ -44,6 +44,13 @@ var Generator = (function() {
             step: 0.01
         },
 
+        exampleString: {
+            type: 'string',
+            label: 'String',
+            description: 'Example string input',
+            value: 'abc'
+        },
+
         exampleBoolean: {
             type: 'boolean',
             label: 'Boolean',
@@ -149,6 +156,19 @@ var Generator = (function() {
                 context.restore()
             }
 
+            // use string
+
+            var fontSize = canvas.width * 0.08
+
+            context.textBaseline = 'middle'
+            context.textAlign = 'center'
+            context.fillStyle = '#000'
+            context.font = fontSize.toFixed(3) + 'px monospace'
+            context.fillText(
+                settings.exampleString.value,
+                canvas.width / 2,
+                canvas.height * 0.9
+            )
 
             // all present and correct
 
