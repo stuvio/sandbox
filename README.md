@@ -67,7 +67,12 @@ For the properties that you do wish to expose through the `settings` object, the
     
 ### String
 
-    // coming soon
+    propName: {
+        type: 'string',
+        label: 'The string',
+        description: 'An example string',
+        value: 'Hello World'
+    }
     
 ### Image
 
