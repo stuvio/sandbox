@@ -76,6 +76,8 @@ var Generator = (function() {
                 context.lineCap = 'round'
                 context.stroke()
             }
+
+            done()
         },
 
         destroy: function( done ) {

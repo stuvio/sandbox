@@ -54,7 +54,7 @@ var Generator = (function() {
 
         initialize: function( done ) {
 
-            // normally, you should add and link dependancies from the dependancies directory
+            // normally, you should add and link dependencies from the dependencies directory
             // we're injecting Three.js from a CDN here simply to avoid cluttering index.html
             // for the sake of this example
             var script = document.createElement( 'script' )

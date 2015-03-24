@@ -7,9 +7,9 @@
         <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="sandbox/sandbox.css"/>
     </head>
-    <body class="sandbox">
+    <body class="sandbox" ng-controller="SandboxController">
         <div style="display: none" ng-include="'sandbox/icons.svg'"></div>
-        <div class="container" ng-controller="SandboxController">
+        <div class="container">
             <x-preview id="preview" generator="generator"></x-preview>
             <div id="info" class="col col1">
                 <header class="header">
@@ -17,6 +17,33 @@
                     <h3 class="name">{{ generator.name }}</h3>
                     <p class="description">{{ generator.description }}</p>
                 </header>
+            </div>
+            <div id="actions">
+                <button class="button undo" ng-disabled="!historyState.canUndo" ng-click="undo()">
+                    <label>undo</label>
+                    <x-icon type="undo"></x-icon>
+                </button>
+                <button class="button redo" ng-disabled="!historyState.canRedo" ng-click="redo()">
+                    <label>redo</label>
+                    <x-icon type="redo"></x-icon>
+                </button>
+                <button class="button reset" ng-disabled="isDefault" ng-click="reset()">
+                    <label>reset</label>
+                    <x-icon type="reset"></x-icon>
+                </button>
+                <button class="button shuffle" ng-click="shuffle()">
+                    <label>randomize</label>
+                    <x-icon type="wand"></x-icon>
+                </button>
+                <button class="button fullscreen" ng-click="toggleFullscreen()">
+                    <label>{{ isFullScreen ? 'exit fullscreen' : 'fullscreen' }}</label>
+                    <x-icon ng-show="!isFullScreen" type="fullscreen"></x-icon>
+                    <x-icon ng-show="isFullScreen" type="exitfullscreen"></x-icon>
+                </button>
+                <button class="button printtest" ng-click="printTest()">
+                    <label>print preview</label>
+                    <x-icon type="paper"></x-icon>
+                </button>
             </div>
             <div id="editor">
                 <x-gui class="gui" generator="generator"></x-gui>
@@ -29,14 +56,43 @@
                 </div>
             </div>
         </div>
+        <div id="print-preview" ng-class="{ active: showPrintPreview }">
+            <header class="header">
+                <h1>Print Preview</h1>
+                <button class="close" ng-click="showPrintPreview = false">
+                    <icon type="cross"></icon>
+                </button>
+            </header>
+            <div class="images">
+                <figure>
+                    <figcaption>Original</figcaption>
+                    <img ng-src="{{previewA}}" width="100%">
+                    <aside ng-if="previewA.length > 1">Image capture showing the state of the currently running generator</aside>
+                </figure>
+                <figure>
+                    <figcaption>Recreation</figcaption>
+                    <img ng-src="{{previewB}}" width="100%">
+                    <aside ng-if="previewB.length > 1">Recreation of the current state in a second generator instance</aside>
+                </figure>
+                <figure>
+                    <figcaption>Difference</figcaption>
+                    <img ng-src="{{previewC}}" width="100%">
+                    <aside ng-if="previewC.length > 1">Difference composite. Light areas show divergence (you want solid black)</aside>
+                </figure>
+            </div>
+            <header class="header">
+                <h1>Serialized settings</h1>
+            </header>
+            <pre class="settings">{{previewSettings}}</pre>
+        </div>
         <x-modal></x-modal>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-sanitize.min.js"></script>
         <script src="sandbox/sandbox.js"></script>
 
-        <!-- dependancies : link scripts from the `dependancies` directory here -->
+        <!-- dependencies : link scripts from the `dependencies` directory here -->
         
-        <script src="dependancies/deps.js"></script>
+        <script src="dependencies/deps.js"></script>
 
         <!-- source : link scripts form the `source` directory here -->
 
