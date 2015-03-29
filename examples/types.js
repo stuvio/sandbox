@@ -12,6 +12,13 @@ var Generator = (function() {
 
     var settings = {
 
+        exampleFunction: {
+            type: 'function',
+            label: 'Function',
+            description: 'example function trigger',
+            value: function() { alert('Ping!') }
+        },
+
         exampleColor: {
             type: 'color',
             label: 'Color',
