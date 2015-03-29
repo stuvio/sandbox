@@ -114,6 +114,15 @@ For the properties that you do wish to expose through the `settings` object, the
         value: null
     }
 
+### Function
+
+    propName: {
+        type: 'function',
+        label: 'The function',
+        description: 'An example function trigger',
+        value: function() { alert( 'Hello World!' ) }
+    }
+
 ## Using Randomness
 
 If you want to use pseudo-random numbers in your Generator, make sure you keep it deterministic. This is because the output from your Generator must be reproducible - creating the same image from the same settings in a predictable manner.
