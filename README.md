@@ -123,6 +123,33 @@ For the properties that you do wish to expose through the `settings` object, the
         value: function() { alert( 'Hello World!' ) }
     }
 
+### Select
+
+    var options = [
+        { name: 'Option 1', value: 1 },
+        { name: 'Option 2', value: 2 },
+        { name: 'Option 3', value: 3 }
+    ];
+    
+    propName: {
+        type: 'select',
+        label: 'The select',
+        description: 'An example select',
+        value: options[0],
+        // If options are objects, the key of the property to use as a label
+        display: 'name'
+    }
+
+## Hidden Settings
+
+The `settings` object is where you should store all configurable parameters for your Generator. Sometimes however, you may not want to expose a setting to the user and instead use it simply to store data internally. In this case, you should still specify a type for the setting, but you can add an additional property named `hidden` in order to tell the Stuvio UI generator _not_ to build any interface for this setting. For example, the following setting will still be serialized and can be manipulated from within a Generator, but will be hidden from the user:
+
+    someHiddenImage: {
+        type: 'image',
+        hidden: true,
+        value: new Image()
+    }
+
 ## Using Randomness
 
 If you want to use pseudo-random numbers in your Generator, make sure you keep it deterministic. This is because the output from your Generator must be reproducible - creating the same image from the same settings in a predictable manner.

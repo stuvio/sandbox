@@ -10,13 +10,30 @@ var Generator = (function() {
     var canvas = document.createElement( 'canvas' )
     var context = canvas.getContext( '2d' )
 
+    var options = [
+        { name: 'Option 1', value: 1 },
+        { name: 'Option 2', value: 2 },
+        { name: 'Option 3', value: 3 },
+        { name: 'Option 4', value: 4 },
+        { name: 'Option 5', value: 5 }
+    ]
+
     var settings = {
 
         exampleFunction: {
             type: 'function',
             label: 'Function',
-            description: 'example function trigger',
+            description: 'Example function trigger',
             value: function() { alert('Ping!') }
+        },
+
+        exampleSelect: {
+            type: 'select',
+            label: 'Select',
+            description: 'Example select input',
+            options: options,
+            display: 'name',
+            value: options[0]
         },
 
         exampleColor: {
@@ -175,6 +192,17 @@ var Generator = (function() {
                 settings.exampleString.value,
                 canvas.width / 2,
                 canvas.height * 0.9
+            )
+
+            // use select
+
+            fontSize = canvas.width * 0.025
+            context.font = fontSize.toFixed(3) + 'px monospace'
+
+            context.fillText(
+                'selected: ' + settings.exampleSelect.value.name,
+                canvas.width / 2,
+                canvas.height * 0.95
             )
 
             // all present and correct
